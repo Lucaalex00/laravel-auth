@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <header class="py-3 bg-dark text-white">
+    <header class="py-3 bg-dark text-light">
         <div class="container d-flex align-items-center justify-content-between">
             <h1>Projects</h1>
             <a class="btn btn-primary" href="{{ route('admin.portfolio.create') }}"> New Project </a>
@@ -10,7 +10,7 @@
 
     <div class="container my-4">
         <div class="table-responsive">
-            <table class="table table-light">
+            <table class="table table-dark">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>

@@ -19,12 +19,12 @@
     @vite(['resources/js/app.js'])
 </head>
 
-<body>
+<body class="bg-dark">
     <div id="app">
 
 
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+        <nav class="navbar navbar-expand-md navbar-dark shadow-md border border-warning">
+            <div class="container text-white">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                     <div class="logo_laravel">
                         <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -94,10 +94,16 @@
             </div>
         </nav>
 
-        <main class="">
+        <main class="my-1 bg-dark border border-danger rounded">
             @yield('content')
         </main>
     </div>
+    <footer class="text-light  position-absolute bottom-0">
+        <a class="text-decoration-none text-danger bg-warning rounded p-2 " href="https://github.com/Lucaalex00">Made
+            by
+            Luca Cirio
+        </a>
+    </footer>
 </body>
 
 </html>

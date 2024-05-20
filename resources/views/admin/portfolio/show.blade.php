@@ -6,7 +6,7 @@
             <h1>Project Details</h1>
         </div>
     </header>
-    <div class="container my-4">
+    <div class="container my-4 text-light">
         <h3>Title: {{ $project->title }}</h3>
         <p>Slug: {{ $project->slug }}</p>
         <p>Link: <a href="{{ $project->link }}">{{ $project->link }}</a></p>

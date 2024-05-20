@@ -20,10 +20,10 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" class="bg-dark">
 
 
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-md">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                     <div class="logo_laravel">
@@ -91,7 +91,7 @@
             </div>
         </nav>
 
-        <main class="">
+        <main class="bg-dark">
             @yield('content')
         </main>
     </div>
