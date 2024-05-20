@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
@@ -21,9 +22,9 @@ class ProjectController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Project $project)
     {
-        //
+        return view('admin.portfolio.create', $project);
     }
 
     /**
@@ -31,7 +32,15 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        //
+        /* Validate */
+
+        $validated = $request->validated();
+        $slug = Str::slug($request->slug, '-');
+        /* Create */
+        $validated['slug'] = $slug;
+        Project::create($validated);
+        /* Redirect */
+        return to_route('admin.portfolio.index');
     }
 
     /**

@@ -4,6 +4,7 @@
     <header class="py-3 bg-dark text-white">
         <div class="container d-flex align-items-center justify-content-between">
             <h1>Projects</h1>
+            <a class="btn btn-primary" href="{{ route('admin.portfolio.create') }}"> New Project </a>
         </div>
     </header>
 
