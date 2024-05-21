@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container p-2">
-        <form action="{{ route('admin.portfolio.store') }}" method="POST">
+        <form action="{{ route('admin.portfolio.update', $project) }}" method="POST">
             @csrf
             @method('PUT')
 

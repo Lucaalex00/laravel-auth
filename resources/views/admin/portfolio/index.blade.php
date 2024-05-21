@@ -9,7 +9,7 @@
 
         @if (session('message'))
             <div class="alert alert-success w-50 my-3 mx-auto text-center">
-                <h4>Project Created Successfully</h4>
+                <h4>{{ session('message') }}</h4>
             </div>
         @endif
     </header>
@@ -38,16 +38,12 @@
                                     &RightArrow; View
                                 </a>
                                 <a class="btn btn-secondary" href="{{ route('admin.portfolio.edit', $project) }}">
-                                    Modify</a>
-
-
-
-
+                                    &boxminus; Modify</a>
 
                                 <!-- Modal trigger button -->
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                     data-bs-target="#modal{{ $project->id }}">
-                                    Delete
+                                    &cross; Delete
                                 </button>
 
                                 <!-- Modal Body -->
@@ -93,7 +89,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5">No projects yet!</td>
+                            <td>No projects yet!</td>
                         </tr>
                     @endforelse
                 </tbody>

@@ -5,6 +5,11 @@
         <div class="container d-flex align-items-center justify-content-between">
             <h1>Project Details</h1>
         </div>
+        @if (session('message'))
+            <div class="alert alert-success w-50 my-3 mx-auto text-center">
+                <h4>{{ session('message') }}</h4>
+            </div>
+        @endif
     </header>
     <div class="container my-4 text-light">
         <h3>Title: {{ $project->title }}</h3>
