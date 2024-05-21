@@ -98,12 +98,6 @@
             @yield('content')
         </main>
     </div>
-    <footer class="text-light  position-absolute bottom-0">
-        <a class="text-decoration-none text-danger bg-warning rounded p-2 " href="https://github.com/Lucaalex00">Made
-            by
-            Luca Cirio
-        </a>
-    </footer>
 </body>
 
 </html>

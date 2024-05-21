@@ -14,7 +14,7 @@
         @endif
     </header>
 
-    <div class="container my-4">
+    <div class="container table_container my-4">
         <div class="table-responsive">
             <table class="table table-dark">
                 <thead>
@@ -91,7 +91,14 @@
                     @endforelse
                 </tbody>
             </table>
+
         </div>
+        <footer class="text-light">
+            <a class="text-decoration-none text-danger bg-warning rounded p-2 " href="https://github.com/Lucaalex00">Made
+                by
+                Luca Cirio
+            </a>
+        </footer>
         {{ $projects->links('pagination::bootstrap-5') }}
     </div>
 @endsection

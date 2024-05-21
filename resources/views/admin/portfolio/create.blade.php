@@ -23,7 +23,7 @@
             <div class="mb-3 text-light">
                 <label for="slug" class="form-label">Slug</label>
                 <input type="text" value="{{ old('slug', $project->slug) }}"
-                    class="form-control  @error('title') is-invalid @enderror" name="slug" id="slug"
+                    class="form-control  @error('slug') is-invalid @enderror" name="slug" id="slug"
                     aria-describedby="helpId" placeholder="Type a slug" />
                 <small id="slugId" class="form-text text-muted">Type a Slug</small>
             </div>
@@ -35,7 +35,7 @@
             <div class="mb-3 text-light">
                 <label for="content" class="form-label">Content</label>
                 <input type="text" value="{{ old('content', $project->content) }}"
-                    class="form-control  @error('title') is-invalid @enderror" name="content" id="content"
+                    class="form-control  @error('content') is-invalid @enderror" name="content" id="content"
                     aria-describedby="helpId" placeholder="Type a content" />
                 <small id="contentId" class="form-text text-muted">Type a Content</small>
             </div>
@@ -47,7 +47,7 @@
             <div class="mb-3 text-light">
                 <label for="link" class="form-label">Link</label>
                 <input type="text" value="{{ old('link', $project->link) }}"
-                    class="form-control  @error('title') is-invalid @enderror" name="link" id="link"
+                    class="form-control  @error('link') is-invalid @enderror" name="link" id="link"
                     aria-describedby="helpId" placeholder="Type a Link" />
                 <small id="linkId" class="form-text text-muted">Type a Link</small>
             </div>
