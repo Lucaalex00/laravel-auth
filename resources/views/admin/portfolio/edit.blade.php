@@ -1,11 +1,10 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h2>Editing : {{ $project->title }}</h2>
-    <div class="container">
-
+    <div class="container p-2">
         <form action="{{ route('admin.portfolio.store') }}" method="POST">
             @csrf
+            @method('PUT')
 
             {{-- Title --}}
             <div class="mb-3 text-light">
@@ -35,7 +34,7 @@
             <div class="mb-3 text-light">
                 <label for="content" class="form-label">Content</label>
                 <input type="text" value="{{ old('content', $project->content) }}"
-                    class="form-control  @error('title') is-invalid @enderror" name="content" id="content"
+                    class="form-control @error('title') is-invalid @enderror" name="content" id="content"
                     aria-describedby="helpId" placeholder="Type a content" />
                 <small id="contentId" class="form-text text-muted">Type a Content</small>
             </div>
@@ -56,7 +55,7 @@
             @enderror
 
             {{-- SUBMIT --}}
-            <button class="btn btn-secondary" type="submit">Confirm</button>
+            <button class="btn btn-secondary" type="submit">EDIT</button>
         </form>
     </div>
 @endsection

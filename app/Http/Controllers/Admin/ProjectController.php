@@ -24,7 +24,7 @@ class ProjectController extends Controller
      */
     public function create(Project $project)
     {
-        return view('admin.portfolio.create', $project);
+        return view('admin.portfolio.create', compact('project'));
     }
 
     /**
@@ -40,7 +40,7 @@ class ProjectController extends Controller
         $validated['slug'] = $slug;
         Project::create($validated);
         /* Redirect */
-        return to_route('admin.portfolio.index');
+        return to_route('admin.portfolio.index')->with('message', 'Post Created Successfully');;
     }
 
     /**
@@ -57,7 +57,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('admin.portfolio.edit', compact('project'));
     }
 
     /**
@@ -65,7 +65,19 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+        /*  dd($request->all()); */
+
+        /* Validate */
+
+        $validated = $request->validated();
+        $slug = Str::slug($request->slug, '-');
+        $validated['slug'] = $slug;
+
+        /* Update */
+        $project->update($validated);
+
+        /* Redirect */
+        return redirect()->back()->with('message', 'Post Edited Successfully');
     }
 
     /**
@@ -73,6 +85,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return to_route('admin.portfolio.index')->with('message', 'Post Deleted');
     }
 }
