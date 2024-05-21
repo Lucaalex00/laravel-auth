@@ -40,7 +40,7 @@ class ProjectController extends Controller
         $validated['slug'] = $slug;
         Project::create($validated);
         /* Redirect */
-        return to_route('admin.portfolio.index')->with('message', 'Project Created Successfully');;
+        return to_route('admin.portfolio.index')->with('message', 'Project "' . $validated['title'] . '" Created');;
     }
 
     /**
@@ -77,7 +77,7 @@ class ProjectController extends Controller
         $project->update($validated);
 
         /* Redirect */
-        return to_route('admin.portfolio.show', $project)->with('message', 'Project Edited Successfully');
+        return to_route('admin.portfolio.show', $project)->with('message', 'Project "' . $project->title . '" Updated');
     }
 
     /**
@@ -86,6 +86,6 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
-        return to_route('admin.portfolio.index')->with('message', 'Project Deleted');
+        return to_route('admin.portfolio.index')->with('message', 'Project "' . $project->title . '" Deleted');
     }
 }

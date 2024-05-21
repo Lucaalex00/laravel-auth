@@ -19,21 +19,23 @@
             <table class="table table-dark">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Slug</th>
-                        <th scope="col">Link</th>
-                        <th scope="col">ACTIONS</th>
+                        <th class="text-center" scope="col">ID</th>
+                        <th class="text-center" scope="col">Title</th>
+                        <th class="text-center" scope="col">Slug</th>
+                        <th class="text-center" scope="col">Link</th>
+                        <th class="text-center" scope="col">ACTIONS</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($projects as $project)
                         <tr>
-                            <td>{{ $project->id }}</td>
-                            <td>{{ $project->title }}</td>
-                            <td>{{ $project->slug }}</td>
-                            <td>{{ $project->link }}</td>
-                            <td>
+                            <td class=" text-center">{{ $project->id }}</td>
+                            <td class=" text-center">{{ $project->title }}</td>
+                            <td class=" text-center">{{ $project->slug }}</td>
+                            <td class=" text-center w-25"><a target="_blank"
+                                    class=" text-decoration-none text-primary shadow"
+                                    href="{{ $project->link }}">{{ $project->link }}</a></td>
+                            <td class=" w-75 text-center d-flex flex-column justify-content-center gap-2">
                                 <a class="btn btn-warning" href="{{ route('admin.portfolio.show', $project) }}">
                                     &RightArrow; View
                                 </a>
@@ -42,43 +44,38 @@
 
                                 <!-- Modal trigger button -->
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#modal{{ $project->id }}">
+                                    data-bs-target="#{{ $project->id }}">
                                     &cross; Delete
                                 </button>
 
                                 <!-- Modal Body -->
                                 <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-                                <div class="modal fade" id="{{ $project->id }}" tabindex="-1" data-bs-backdrop="static"
-                                    data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitle{{ $project->id }}"
-                                    aria-hidden="true">
+                                <div class="modal fade text-dark" id="{{ $project->id }}" tabindex="-1" role="dialog"
+                                    aria-labelledby="modalTitle{{ $project->id }}" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
                                         role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="modalTitle{{ $project->id }}">
-                                                    Delete Post {{ $project->title }}
+                                                    Delete Post "{{ $project->title }}"
                                                 </h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
                                             </div>
-                                            <div class="modal-body">Are you sure to delete this item ?</div>
+                                            <div class="modal-body text-danger">Are you sure to delete this item ? </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                                     Close
                                                 </button>
-                                                <button type="button" class="btn btn-primary">
 
-                                                    <form action="{{ route('admin.portfolio.destroy', $project) }}"
-                                                        method="post">
-                                                        @csrf
-                                                        @method('DELETE')
+                                                <form action="{{ route('admin.portfolio.destroy', $project) }}"
+                                                    method="post">
+                                                    @csrf
+                                                    @method('DELETE')
 
-                                                        <button type="submit" class="btn btn-danger">
-                                                            Confirm
-                                                        </button>
+                                                    <button type="submit" class="btn btn-danger">
+                                                        Confirm
+                                                    </button>
 
-                                                    </form>
-                                                </button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
