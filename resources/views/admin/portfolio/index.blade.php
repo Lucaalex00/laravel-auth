@@ -20,8 +20,8 @@
                 <thead>
                     <tr>
                         <th class="text-center" scope="col">ID</th>
+                        <th class="text-center" scope="col">Image</th>
                         <th class="text-center" scope="col">Title</th>
-                        <th class="text-center" scope="col">Slug</th>
                         <th class="text-center" scope="col">Link</th>
                         <th class="text-center" scope="col">ACTIONS</th>
                     </tr>
@@ -36,24 +36,24 @@
                                 <td class=" text-center"><img src="{{ asset('storage/' . $project->cover_image) }}"
                                         alt="asd"></td>
                             @endif
-
-                            <td class=" text-center">{{ $project->title }}</td>
-                            <td class=" text-center">{{ $project->slug }}</td>
+                            <td class=" text-center shadow">{{ $project->title }}</td>
                             <td class=" text-center w-25"><a target="_blank"
-                                    class=" text-decoration-none text-primary shadow"
+                                    class=" text-decoration-none text-warning shadow"
                                     href="{{ $project->link }}">{{ $project->link }}</a></td>
-                            <td class=" w-75 text-center d-flex flex-column justify-content-center gap-2">
-                                <a class="btn btn-warning" href="{{ route('admin.portfolio.show', $project) }}">
-                                    &RightArrow; View
-                                </a>
-                                <a class="btn btn-secondary" href="{{ route('admin.portfolio.edit', $project) }}">
-                                    &boxminus; Modify</a>
+                            <td class=" text-center">
+                                <div class="d-flex flex-column gap-3">
+                                    <a class="btn btn-warning" href="{{ route('admin.portfolio.show', $project) }}">
+                                        &RightArrow; View
+                                    </a>
+                                    <a class="btn btn-secondary" href="{{ route('admin.portfolio.edit', $project) }}">
+                                        &boxminus; Modify</a>
 
-                                <!-- Modal trigger button -->
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#{{ $project->id }}">
-                                    &cross; Delete
-                                </button>
+                                    <!-- Modal trigger button -->
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                        data-bs-target="#{{ $project->id }}">
+                                        &cross; Delete
+                                    </button>
+                                </div>
 
                                 <!-- Modal Body -->
                                 <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
