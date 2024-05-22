@@ -4,8 +4,17 @@
     <h2>Editing : {{ $project->title }}</h2>
     <div class="container">
 
-        <form action="{{ route('admin.portfolio.store') }}" method="POST">
+        <form action="{{ route('admin.portfolio.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
+
+            {{-- IN THIS CASE, I DON'T MAKE A COVER_IMAGE FIELD ON MY DB --}}
+            <div class="mb-3 text-light">
+                <label for="link" class="form-label">cover_image</label>
+                <input type="file" value="{{ old('cover_image', $project->cover_image) }}"
+                    class="form-control  @error('cover_image') is-invalid @enderror" name="cover_image" id="cover_image"
+                    aria-describedby="helpId" placeholder="Type a cover_image" />
+                <small id="cover_imageId" class="form-text text-muted">Type a cover_image</small>
+            </div>
 
             {{-- Title --}}
             <div class="mb-3 text-light">

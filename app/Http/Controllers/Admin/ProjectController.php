@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
@@ -32,13 +33,20 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
+        /* dd($request->all()); */
         /* Validate */
-
         $validated = $request->validated();
         $slug = Str::slug($request->slug, '-');
-        /* Create */
         $validated['slug'] = $slug;
+
+        /* Create */
         Project::create($validated);
+        /* $image_path = Storage::put('uploads', $validated['cover_image']); */ //IMG MAKER
+        /* dd($image_path); */
+        /* $validated['cover_image'] = $image_path; */
+        /* dd($validated); */
+
+
         /* Redirect */
         return to_route('admin.portfolio.index')->with('message', 'Project "' . $validated['title'] . '" Created');;
     }
@@ -73,8 +81,20 @@ class ProjectController extends Controller
         $slug = Str::slug($request->slug, '-');
         $validated['slug'] = $slug;
 
+        /*  if ($request->has('cover_image')) {
+            if ($project->cover_image) {
+                Storage::delete($project->cover_image);
+            }
+        } */
+        /* $image_path = Storage::put('uploads', $validated['cover_image']); */ //IMG MAKER
+        /* dd($image_path); */
+        /* $validated['cover_image'] = $image_path; */
+        /* dd($validated); */
+
+
         /* Update */
         $project->update($validated);
+
 
         /* Redirect */
         return to_route('admin.portfolio.show', $project)->with('message', 'Project "' . $project->title . '" Updated');
@@ -85,6 +105,12 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+
+
+        if ($project->cover_image) {
+            //REMOVE THE OLD IMAGE INSIDE ON LOCAL STORAGE
+            Storage::delete($project->cover_image);
+        };
         $project->delete();
         return to_route('admin.portfolio.index')->with('message', 'Project "' . $project->title . '" Deleted');
     }
