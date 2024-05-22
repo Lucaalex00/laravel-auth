@@ -31,12 +31,14 @@
                         <tr>
                             <td class=" text-center">{{ $project->id }}</td>
                             @if (Str::startsWith($project->cover_image, 'https://'))
-                                <td class=" text-center"><img src="{{ $project->cover_image }}" alt="asd"></td>
+                                <td class=" text-center"><img width="200" height="200"
+                                        src="{{ $project->cover_image }}" alt="asd"></td>
                             @else
-                                <td class=" text-center"><img src="{{ asset('storage/' . $project->cover_image) }}"
-                                        alt="asd">
+                                <td class=" text-center"><img width="200" height="200"
+                                        src="{{ asset('storage/' . $project->cover_image) }}" alt="asd">
                                 </td>
                             @endif
+
                             <td class=" text-center shadow">{{ $project->title }}</td>
                             <td class=" text-center w-25"><a target="_blank"
                                     class=" text-decoration-none text-warning shadow"

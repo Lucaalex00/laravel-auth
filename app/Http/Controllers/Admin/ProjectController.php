@@ -36,15 +36,19 @@ class ProjectController extends Controller
         /* dd($request->all()); */
         /* Validate */
         $validated = $request->validated();
+
+        //SLUG
         $slug = Str::slug($request->slug, '-');
         $validated['slug'] = $slug;
 
-        /* Create */
+        //COVER_IMAGE
         $image_path = Storage::put('uploads', $validated['cover_image']);  //IMG MAKER
         /* dd($image_path); */
         $validated['cover_image'] = $image_path;
-        Project::create($validated);
         /* dd($validated); */
+
+        /* Create */
+        Project::create($validated);
 
 
         /* Redirect */

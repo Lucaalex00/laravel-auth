@@ -20,7 +20,8 @@
         <div>Slug: {{ $project->slug }}</div>
 
         <div class="container d-flex align-items-center gap-2 p-0 my-2">
-            <img width="150" height="150" src="{{ $project->cover_image }}" alt="Image of {{ $project->title }}">
+            <img width="300" height="300" src="{{ asset('storage/' . $project->cover_image) }}"
+                alt="Image of {{ $project->title }}">
             <a class="text-decoration-none text-warning" href="{{ $project->link }}">{{ $project->link }}</a>
 
         </div>
