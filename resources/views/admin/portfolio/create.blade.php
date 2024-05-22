@@ -7,14 +7,16 @@
         <form action="{{ route('admin.portfolio.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
-            {{-- IN THIS CASE, I DON'T MAKE A COVER_IMAGE FIELD ON MY DB --}}
+            {{-- cover_image --}}
             <div class="mb-3 text-light">
                 <label for="link" class="form-label">cover_image</label>
-                <input type="file" value="{{ old('cover_image', $project->cover_image) }}"
-                    class="form-control  @error('cover_image') is-invalid @enderror" name="cover_image" id="cover_image"
-                    aria-describedby="helpId" placeholder="Type a cover_image" />
+                <input type="file" class="form-control  @error('cover_image') is-invalid @enderror" name="cover_image"
+                    id="cover_image" aria-describedby="helpId" placeholder="Type a cover_image" />
                 <small id="cover_imageId" class="form-text text-muted">Type a cover_image</small>
             </div>
+            @error('cover_image')
+                <h4 class="text-danger ">{{ $message }}</h4>
+            @enderror
 
             {{-- Title --}}
             <div class="mb-3 text-light">
